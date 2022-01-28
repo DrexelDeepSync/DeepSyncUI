@@ -28,9 +28,9 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
+          <img src="./images/DeepSync_logo.png" width="100" height="100"></img>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            deepSync
-            
+            DeepSync
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
