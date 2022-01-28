@@ -2,6 +2,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import HeroSection from './components/HeroSection';
+import ProjectCreation from './components/ProjectCreation';
+
 
 function App() {
   return (
@@ -9,7 +11,9 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path = '/' exact />
+          <Route exact path = '/'/>
+          <Route exact path="/project-creation" component={ProjectCreation} />
+
         </Switch>
         <HeroSection></HeroSection>
       </Router>
