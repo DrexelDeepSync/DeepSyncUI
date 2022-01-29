@@ -1,0 +1,10 @@
+.options {
+    width: 75%;
+    border: 2px solid black;
+    padding: 50px;
+    margin: 100px;
+}
+
+div {
+    padding: 1%;
+}
