@@ -28,7 +28,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <img src="./images/DeepSync_logo.png" width="100" height="100"></img>
+          <img src="./images/DeepSync_logo.png" width="10%" height="200%"></img>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             DeepSync
           </Link>
@@ -78,7 +78,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>LOG IN</Button>}
+          {button && <Button buttonStyle='btn--outline'>LOGIN</Button>}
 
           {button && <Button buttonStyle='btn--outline'>REGISTER</Button>}
         </div>
