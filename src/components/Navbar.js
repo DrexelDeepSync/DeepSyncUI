@@ -28,7 +28,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <img src="./images/DeepSync_logo.png" width="10%" height="200%"></img>
+          <img src="./images/DeepSync_logo.png" width="100px" height="100px"></img>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             DeepSync
           </Link>
