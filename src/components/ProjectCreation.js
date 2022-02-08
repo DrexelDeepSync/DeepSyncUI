@@ -10,10 +10,20 @@ function ProjectCreation () {
             <h1 class="headers">Project Creation</h1>
             <Row>
                 <Col>
-                    <a class="btn btn-primary options" href="/upload-information">Option 1</a>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
+                </Col>
+                <Col></Col>
+            </Row>
+            <Row>
+                <Col>
+                    <a class="btn btn-primary options" href="/upload-information">Option 1:                
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+                    </a>
                 </Col>
                 <Col>
-                    <a class="btn btn-primary options" href="/upload-information">Option 2</a>
+                    <a class="btn btn-primary options" href="/upload-information">Option 2:
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+                    </a>
                 </Col>
             </Row>
         </div>
