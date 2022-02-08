@@ -10,7 +10,7 @@ function UploadInformation() {
         <h1 class="headers">Upload Information</h1>
         <Row>
             <Col>
-        <text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</text>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
             </Col>
             <Col>
             </Col>
@@ -34,19 +34,19 @@ function UploadInformation() {
             </Col>
         </Row>
     </div><div>
-            <h3>Steps</h3>
+            <h2>Steps</h2>
             <Row>
                 <Col>
                     <ol>
-                        <li>SELECT VIDEO<input type="file" id="source_vid" name="source_vid"></input></li>
-                        <text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</text>
-
-                        <li>ENTER SCRIPT<input type="file" id="script_file" name="script_file"></input></li>
-                        <text>OR</text>
+                        <li><h5>SELECT VIDEO</h5><input type="file" id="source_vid" name="source_vid"></input></li>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
                         <br></br>
-                        <text>TYPE SCRIPT</text>
+                        <li><h5>ENTER SCRIPT</h5><input type="file" id="script_file" name="script_file"></input></li>
                         <br></br>
-                        <text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</text>
+                        <p>OR</p>
+                        <br></br>
+                        <h5>TYPE SCRIPT</h5>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
                         <textarea id="script_typed" name="script_typed" rows="4" cols="50">
                             Type script here...
                         </textarea>
@@ -54,14 +54,19 @@ function UploadInformation() {
                 </Col>
                 <Col>
                     <ol start="3">
-                        <li>SELECT AUDIO<input type="file" id="source_audio" name="source_audio"></input></li>
-                        <text>OR</text>
+                        <li><h5>SELECT AUDIO</h5><input type="file" id="source_audio" name="source_audio"></input></li>
                         <br></br>
-                        <text>RECORD AUDIO</text>
+                        <p>OR</p>
                         <br></br>
-                        <text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</text>
+                        <h5>RECORD AUDIO</h5>
+                        <br></br>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
+                        <img id="record" src="./images/record_button.png" onClick="toggleRecording();"></img>
+                        <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+                        <script src="./Record.js"></script>
                     </ol>
-                    <text>AUDIO OUTPUT VERIFICATION</text>
+                    <br></br>
+                    <h5>AUDIO OUTPUT VERIFICATION</h5>
 
                 </Col>
             </Row>
