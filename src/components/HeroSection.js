@@ -6,7 +6,7 @@ import './HeroSection.css';
 function HeroSection() {
   return (
     <div className='hero-container'>
-      <video src='/videos/classroom.mp4' autoPlay loop muted />
+      <video autoPlay loop muted />
       <h1 color='#2F95C5'>Lecturing Made Easy</h1>
       <div className='hero-btns'>
         <Button
@@ -22,3 +22,4 @@ function HeroSection() {
 }
 
 export default HeroSection;
+// src='/videos/classroom.mp4'
