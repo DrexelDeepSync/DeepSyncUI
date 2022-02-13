@@ -72,30 +72,15 @@ function UploadInformation() {
 
 
                         <div class="wrapper">
-
-<header>
-  <h1>Web dictaphone</h1>
-</header>
-
-<section class="main-controls">
-  <canvas class="visualizer" height="60px"></canvas>
-  <div id="buttons">
-    <button class="recordButton">Record</button>
-    <button class="stopButton">Stop</button>
-  </div>
-</section>
-
-<section class="sound-clips">
-
-
-</section>
-
-</div>
-
-
-
-
-
+                            <section class="main-controls">
+                                <div id="buttons">
+                                    <button class="recordButton">Record</button>
+                                    <button class="stopButton">Stop</button>
+                                </div>
+                            </section>
+                            <section class="sound-clips">
+                            </section>
+                        </div>
 
                     </ol>
                     <br></br>

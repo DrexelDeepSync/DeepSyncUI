@@ -3,12 +3,10 @@
 const recordButton = document.querySelector('.recordButton');
 const stopButton = document.querySelector('.stopButton');
 const soundClips = document.querySelector('.sound-clips');
-const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
 
 // disable stopButton button while not recording
 
-//stopButton.disabled = true;
 
 let audioCtx;
 
@@ -16,6 +14,7 @@ let audioCtx;
 
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
+  stopButton.disabled = true;
 
   const constraints = { audio: true };
   let chunks = [];
@@ -50,7 +49,7 @@ if (navigator.mediaDevices.getUserMedia) {
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stopButton() called.");
 
-      const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
+      const clipName = "recorded_audio"
 
       const clipContainer = document.createElement('article');
       const clipLabel = document.createElement('p');
@@ -129,6 +128,4 @@ function visualize(stream) {
 
 }
 
-window.onresize = function() {
-  canvas.width = mainSection.offsetWidth;
-}
+
