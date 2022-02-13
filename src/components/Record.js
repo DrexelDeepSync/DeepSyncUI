@@ -4,11 +4,11 @@ const recordButton = document.querySelector('.recordButton');
 const stopButton = document.querySelector('.stopButton');
 const soundClips = document.querySelector('.sound-clips');
 const mainSection = document.querySelector('.main-controls');
+const recordingLabel = document.getElementById("recording_label");
 
 // disable stopButton button while not recording
 
 
-let audioCtx;
 
 //main block for doing the audio recording
 
@@ -22,12 +22,12 @@ if (navigator.mediaDevices.getUserMedia) {
   let onSuccess = function(stream) {
     const mediaRecorder = new MediaRecorder(stream);
 
-    visualize(stream);
 
     recordButton.onclick = function() {
       mediaRecorder.start();
       console.log(mediaRecorder.state);
       console.log("recorder started");
+      recordingLabel.removeAttribute("hidden");
       recordButton.style.background = "red";
 
       stopButton.disabled = false;
@@ -38,6 +38,7 @@ if (navigator.mediaDevices.getUserMedia) {
       mediaRecorder.stop();
       console.log(mediaRecorder.state);
       console.log("recorder stopped");
+      recordingLabel.hidden = true;
       recordButton.style.background = "";
       recordButton.style.color = "";
       // mediaRecorder.requestData();
@@ -84,15 +85,6 @@ if (navigator.mediaDevices.getUserMedia) {
         evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
       }
 
-      clipLabel.onclick = function() {
-        const existingName = clipLabel.textContent;
-        const newClipName = prompt('Enter a new name for your sound clip?');
-        if(newClipName === null) {
-          clipLabel.textContent = existingName;
-        } else {
-          clipLabel.textContent = newClipName;
-        }
-      }
     }
 
     mediaRecorder.ondataavailable = function(e) {
@@ -108,24 +100,6 @@ if (navigator.mediaDevices.getUserMedia) {
 
 } else {
    console.log('getUserMedia not supported on your browser!');
-}
-
-function visualize(stream) {
-  if(!audioCtx) {
-    audioCtx = new AudioContext();
-  }
-
-  const source = audioCtx.createMediaStreamSource(stream);
-
-  const analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 2048;
-  const bufferLength = analyser.frequencyBinCount;
-  const dataArray = new Uint8Array(bufferLength);
-
-  source.connect(analyser);
-  //analyser.connect(audioCtx.destination);
-
-
 }
 
 

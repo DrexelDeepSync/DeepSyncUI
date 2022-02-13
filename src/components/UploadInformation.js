@@ -67,11 +67,12 @@ function UploadInformation() {
                         <h5>RECORD AUDIO</h5>
                         <br></br>
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
-                        <img id="record" src="./images/record_button.png" onClick="toggleAudio()" ></img>
+                        <img id="record" src="./images/record_button.png"  ></img>
+                        <h3 id="recording_label" hidden>RECORDING</h3>
                         <script src="./Record.js"></script>
 
 
-                        <div class="wrapper">
+                        <div>
                             <section class="main-controls">
                                 <div id="buttons">
                                     <button class="recordButton">Record</button>
