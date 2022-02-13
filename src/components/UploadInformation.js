@@ -2,10 +2,10 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import {  Row, Col } from "react-bootstrap";
 import './UploadInformation.css';
+import './Record.js';
 
 function UploadInformation() {
     return ( <>
-
     <div>
         <h1 class="headers">Upload Information</h1>
         <Row>
@@ -54,16 +54,49 @@ function UploadInformation() {
                 </Col>
                 <Col>
                     <ol start="3">
-                        <li><h5>SELECT AUDIO</h5><input type="file" id="source_audio" name="source_audio"></input></li>
+                        <li>
+                                <h5>SELECT AUDIO</h5>
+                                <input type="file" accept="audio/*" id="source_audio"></input>
+                        </li>
+                        <audio id="player" controls>
+                        </audio>
+ 
                         <br></br>
                         <p>OR</p>
                         <br></br>
                         <h5>RECORD AUDIO</h5>
                         <br></br>
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
-                        <img id="record" src="./images/record_button.png" onClick="toggleRecording();"></img>
-                        <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+                        <img id="record" src="./images/record_button.png" onClick="toggleAudio()" ></img>
                         <script src="./Record.js"></script>
+
+
+                        <div class="wrapper">
+
+<header>
+  <h1>Web dictaphone</h1>
+</header>
+
+<section class="main-controls">
+  <canvas class="visualizer" height="60px"></canvas>
+  <div id="buttons">
+    <button class="recordButton">Record</button>
+    <button class="stopButton">Stop</button>
+  </div>
+</section>
+
+<section class="sound-clips">
+
+
+</section>
+
+</div>
+
+
+
+
+
+
                     </ol>
                     <br></br>
                     <h5>AUDIO OUTPUT VERIFICATION</h5>
