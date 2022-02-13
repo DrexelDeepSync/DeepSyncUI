@@ -44,10 +44,11 @@ if (navigator.mediaDevices.getUserMedia) {
       // mediaRecorder.requestData();
 
       stopButton.disabled = true;
-      recordButton.disabled = false;
+      recordButton.disabled = true;
     }
 
     mediaRecorder.onstop = function(e) {
+
       console.log("data available after MediaRecorder.stopButton() called.");
 
       const clipName = "recorded_audio"
@@ -59,7 +60,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
       clipContainer.classList.add('clip');
       audio.setAttribute('controls', '');
-      deleteButton.textContent = 'Delete';
+      deleteButton.textContent = 'Re-Record';
       deleteButton.className = 'delete';
 
       if(clipName === null) {
@@ -83,6 +84,7 @@ if (navigator.mediaDevices.getUserMedia) {
       deleteButton.onclick = function(e) {
         let evtTgt = e.target;
         evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+        recordButton.disabled = false;
       }
 
     }
