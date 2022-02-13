@@ -1,4 +1,4 @@
-// set up basic variables for app
+//Source: https://github.com/mdn/web-dictaphone
 
 const recordButton = document.querySelector('.recordButton');
 const stopButton = document.querySelector('.stopButton');
