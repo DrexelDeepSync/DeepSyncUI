@@ -70,23 +70,13 @@ function UploadInformation() {
                         <img id="record" src="./images/record_button.png"  ></img>
                         <h3 id="recording_label" hidden>RECORDING</h3>
                         <script src="./Record.js"></script>
-
-
-                        <div>
-                            <section class="main-controls">
-                                <div id="buttons">
-                                    <button class="recordButton">Record</button>
-                                    <button class="stopButton">Stop</button>
-                                </div>
-                            </section>
-                            <section class="sound-clips">
-                            </section>
-                        </div>
+                            
 
                     </ol>
                     <br></br>
                     <h5>AUDIO OUTPUT VERIFICATION</h5>
-
+                    <div class="sound-clips">
+                            </div>
                 </Col>
             </Row>
         </div></>)

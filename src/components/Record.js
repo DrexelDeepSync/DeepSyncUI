@@ -1,78 +1,65 @@
 //Source: https://github.com/mdn/web-dictaphone
 
-const recordButton = document.querySelector('.recordButton');
-const stopButton = document.querySelector('.stopButton');
+import "./Record.css";
+
+const recordButton = document.getElementById("record");
 const soundClips = document.querySelector('.sound-clips');
-const mainSection = document.querySelector('.main-controls');
 const recordingLabel = document.getElementById("recording_label");
-
-// disable stopButton button while not recording
-
+let isRecording = false;
+let audioComplete = false;
 
 
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
-  stopButton.disabled = true;
 
   const constraints = { audio: true };
   let chunks = [];
 
   let onSuccess = function(stream) {
+    console.log("HERE");
+
     const mediaRecorder = new MediaRecorder(stream);
-
-
     recordButton.onclick = function() {
-      mediaRecorder.start();
-      console.log(mediaRecorder.state);
-      console.log("recorder started");
-      recordingLabel.removeAttribute("hidden");
-      recordButton.style.background = "red";
-
-      stopButton.disabled = false;
-      recordButton.disabled = true;
+      if (isRecording == false && audioComplete == false){
+        mediaRecorder.start();
+        recordingLabel.hidden = false;
+        isRecording = true;
+        console.log(mediaRecorder.state);
+        console.log("recorder started");
+       
+      } else if (isRecording == true){
+        mediaRecorder.stop();
+        recordingLabel.hidden = true;
+        isRecording = false;
+        console.log(mediaRecorder.state);
+        console.log("recorder stopped");
+       
+        //mediaRecorder.requestData();
+  
+      }
+      
     }
-
-    stopButton.onclick = function() {
-      mediaRecorder.stop();
-      console.log(mediaRecorder.state);
-      console.log("recorder stopped");
-      recordingLabel.hidden = true;
-      recordButton.style.background = "";
-      recordButton.style.color = "";
-      // mediaRecorder.requestData();
-
-      stopButton.disabled = true;
-      recordButton.disabled = true;
-    }
-
+  
     mediaRecorder.onstop = function(e) {
-
-      console.log("data available after MediaRecorder.stopButton() called.");
-
-      const clipName = "recorded_audio"
+      console.log("data available after MediaRecorder.stop() called.");
 
       const clipContainer = document.createElement('article');
-      const clipLabel = document.createElement('p');
       const audio = document.createElement('audio');
-      const deleteButton = document.createElement('button');
+      const br = document.createElement('br');
+      const reRecordButton = document.createElement('button');
 
       clipContainer.classList.add('clip');
       audio.setAttribute('controls', '');
-      deleteButton.textContent = 'Re-Record';
-      deleteButton.className = 'delete';
-
-      if(clipName === null) {
-        clipLabel.textContent = 'My unnamed clip';
-      } else {
-        clipLabel.textContent = clipName;
-      }
+      reRecordButton.textContent = 'Re-Record';
+      reRecordButton.className = 'rerecord';
 
       clipContainer.appendChild(audio);
-      clipContainer.appendChild(clipLabel);
-      clipContainer.appendChild(deleteButton);
+      clipContainer.appendChild(br);
+      clipContainer.appendChild(reRecordButton);
       soundClips.appendChild(clipContainer);
+      audioComplete = true;
 
       audio.controls = true;
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
@@ -81,12 +68,13 @@ if (navigator.mediaDevices.getUserMedia) {
       audio.src = audioURL;
       console.log("recorder stopped");
 
-      deleteButton.onclick = function(e) {
+      reRecordButton.onclick = function(e) {
         let evtTgt = e.target;
         evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-        recordButton.disabled = false;
+        audioComplete = false;
       }
 
+  
     }
 
     mediaRecorder.ondataavailable = function(e) {
@@ -103,5 +91,6 @@ if (navigator.mediaDevices.getUserMedia) {
 } else {
    console.log('getUserMedia not supported on your browser!');
 }
+
 
 
