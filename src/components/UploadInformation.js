@@ -56,10 +56,11 @@ function UploadInformation() {
                     <ol start="3">
                         <li>
                                 <h5>SELECT AUDIO</h5>
-                                <input type="file" accept="audio/*" id="source_audio"></input>
+                                <div id="uploaded_player">
+                                    <input type="file" accept="audio/*" id="source_audio"></input>
+                                </div>
                         </li>
-                        <audio id="player" controls>
-                        </audio>
+                        
  
                         <br></br>
                         <p>OR</p>

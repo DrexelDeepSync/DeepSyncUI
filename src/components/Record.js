@@ -2,11 +2,22 @@
 
 import "./Record.css";
 
+const uploadedAudio = document.getElementById("source_audio");
 const recordButton = document.getElementById("record");
 const soundClips = document.querySelector('.sound-clips');
 const recordingLabel = document.getElementById("recording_label");
 let isRecording = false;
 let audioComplete = false;
+
+uploadedAudio.onchange = function() {
+  const player = document.getElementById("uploaded_player");
+  const audio = document.createElement('audio');
+  const br = document.createElement('br');
+  audio.setAttribute('controls', 'true');
+  audio.src = this.value;
+  player.appendChild(br);
+  player.appendChild(audio);
+}
 
 
 //main block for doing the audio recording
