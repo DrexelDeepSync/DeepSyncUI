@@ -17,15 +17,16 @@ from audioread.exceptions import NoBackendError
 class TextToSpeech:
 
     def __init__(self):
-        self.encModelPath=Path("libs/RTVC/encoder/saved_models/pretrained.pt".replace("\"", "").replace("\'", ""))
-        self.synModelPath=Path("libs/RTVC/synthesizer/saved_models/pretrained/pretrained.pt".replace("\"", "").replace("\'", ""))
-        self.vocModelPath=Path("libs/RTVC/vocoder/saved_models/pretrained/pretrained.pt".replace("\"", "").replace("\'", ""))
+        self.encModelPath=Path("backend/libs/RTVC/encoder/saved_models/pretrained.pt".replace("\"", "").replace("\'", ""))
+        self.synModelPath=Path("backend/libs/RTVC/synthesizer/saved_models/pretrained/pretrained.pt".replace("\"", "").replace("\'", ""))
+        self.vocModelPath=Path("backend/libs/RTVC/vocoder/saved_models/pretrained/pretrained.pt".replace("\"", "").replace("\'", ""))
         self.cpu = False
         self.noSound = True
         self.noMp3Support = False
 
     def convert_text_to_speech(self, textToConvert, soundPath, nameOfFile, seed=None):
     
+        print(os.getcwd())
         if not self.noSound:
             import sounddevice as sd
 
@@ -35,7 +36,7 @@ class TextToSpeech:
 
         if not self.noMp3Support:
             try:
-                librosa.load("libs/RTVC/samples/1320_00000.mp3")
+                librosa.load("backend/libs/RTVC/samples/1320_00000.mp3")
             except NoBackendError:
                 print("Librosa will be unable to open mp3 files if additional software is not installed.\n"
                     "Please install ffmpeg or add the '--no_mp3_support' option to proceed without support for mp3 files.")
