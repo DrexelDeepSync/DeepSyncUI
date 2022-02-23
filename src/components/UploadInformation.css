@@ -14,11 +14,13 @@ input {
 }
 
 
-input[type=file]::file-selector-button {
+input[type=file]::file-selector-button, input[type=submit] {
     color:rgb(47, 149, 197);
     border: 2px solid rgb(47, 149, 197); 
     font-family: sans-serif;
     text-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
   }
 
 ol> li::marker {

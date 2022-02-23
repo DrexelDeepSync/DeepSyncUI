@@ -39,17 +39,17 @@ function UploadInformation() {
                 <Col>
                     <ol>
                         <li><h5>SELECT VIDEO</h5><input type="file" id="source_vid" name="source_vid"></input></li>
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
-                        <br></br>
-                        <li><h5>ENTER SCRIPT</h5><input type="file" id="script_file" name="script_file"></input></li>
                         <br></br>
                         <p>OR</p>
                         <br></br>
-                        <h5>TYPE SCRIPT</h5>
+                        <h5>RECORD VIDEO</h5>
+                        <br></br>
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
+                        <li><h5>TYPE SCRIPT</h5></li>
                         <textarea id="script_typed" name="script_typed" rows="4" cols="50">
                             Type script here...
                         </textarea>
+                        
                     </ol>
                 </Col>
                 <Col>
@@ -57,12 +57,9 @@ function UploadInformation() {
                         <li>
                                 <h5>SELECT AUDIO</h5>
                                 <div id="uploaded_player">
-                                    <input type="file" accept="audio/*" id="source_audio"></input>
-
+                                    <input type="file" accept="audio/*" id="source_audio" multiple></input>
                                 </div>
                         </li>
-                        
- 
                         <br></br>
                         <p>OR</p>
                         <br></br>
@@ -71,8 +68,8 @@ function UploadInformation() {
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
                         <img id="record" src="./images/record_button.png"  ></img>
                         <h3 id="recording_label" hidden>RECORDING</h3>
-                            
-
+                        <br></br>
+                        <input type="submit" value="Generate Audio"></input>
                     </ol>
                     <br></br>
                     <h5>AUDIO OUTPUT VERIFICATION</h5>
