@@ -17,7 +17,7 @@ uploadedAudio.onchange = function() {
   audio.src = this.value;
   player.appendChild(br);
   player.appendChild(audio);
-}
+} 
 
 
 //main block for doing the audio recording

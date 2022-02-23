@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import {  Row, Col } from "react-bootstrap";
 import './UploadInformation.css';
-import './Record.js';
+//import './Record.js';
 
 function UploadInformation() {
     return ( <>
@@ -58,6 +58,7 @@ function UploadInformation() {
                                 <h5>SELECT AUDIO</h5>
                                 <div id="uploaded_player">
                                     <input type="file" accept="audio/*" id="source_audio"></input>
+
                                 </div>
                         </li>
                         
@@ -70,7 +71,6 @@ function UploadInformation() {
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
                         <img id="record" src="./images/record_button.png"  ></img>
                         <h3 id="recording_label" hidden>RECORDING</h3>
-                        <script src="./Record.js"></script>
                             
 
                     </ol>
