@@ -2,6 +2,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import HeroSection from './components/HeroSection';
+import ProjectCreation from './components/ProjectCreation';
+import UploadInformation from './components/UploadInformation';
 import GettingStarted from './components/GettingStarted';
 import Plans from './components/Plans';
 
@@ -11,7 +13,10 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path = '/' exact />
+          <Route exact path = '/'/>
+          <Route exact path="/project-creation" component={ProjectCreation} />
+          <Route exact path="/upload-information" component={UploadInformation} />
+
         </Switch>
         <HeroSection></HeroSection>
         <GettingStarted></GettingStarted>

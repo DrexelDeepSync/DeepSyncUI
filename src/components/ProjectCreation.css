@@ -1,0 +1,27 @@
+
+.options {
+    width: 75%;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 50px;
+    margin: 100px;
+}
+
+a > p {
+    text-align: left;
+}
+
+a.btn{
+    border: 2px solid rgb(47, 149, 197); 
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+.options:hover {
+    background-color: #E5E7E9 ;
+}
+
+div {
+    padding: 1%;
+}
