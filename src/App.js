@@ -23,6 +23,8 @@ function App() {
         <HeroSection></HeroSection>
         <GettingStarted></GettingStarted>
         <Plans></Plans>
+        <Team></Team>
+        <ProjectCreation></ProjectCreation>
       </Router>
     </>
   );
