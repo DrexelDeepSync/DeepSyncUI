@@ -1,4 +1,5 @@
 import React from "react";
+import {  Row, Col } from "react-bootstrap";
 
 
 const Team = () => {
@@ -9,6 +10,23 @@ const Team = () => {
   crossorigin="anonymous"/>
   <div class="py-5 team4">
   <div class="container">
+    <div>
+      <Row>
+        <Col>
+          <h2>Generate Hours of Lecture Material Passively </h2>
+          <br></br>
+          <h4>About DeepSync</h4>
+          <p>
+          With the emergence of COVID-19, a trend towards online teaching began as a means of continuing education throughout the pandemic. Many professors choose to create pre-recorded lectures, which takes hours of prep work and recording. This process is inefficient and takes away time they could spend doing other things. 
+          DeepSync gives professors the ability to generate hours of lecture materials passively, with scalable options depending on their available resources. This software provides an interface to input their script, sample audio of their voice, and an image or video, and creates a lecture that looks and sounds just like them. The key aspect of this interface is that professors can simply write a script, provide a couple resources, start the processing, and forget about it. They are provided with multiple options depending on whether they want to prioritize speed or quality, and what resources they already have available.
+          </p>
+        </Col>
+        <Col>
+          <img src="./images/DeepSync_logo.png"></img>
+        </Col>
+      </Row>
+      
+    </div>
     <div class="row justify-content-center mb-4">
       <div class="col-md-7 text-center">
         <h3 class="mb-3">Meet the Team</h3>
