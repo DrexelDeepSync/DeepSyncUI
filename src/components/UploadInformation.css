@@ -3,7 +3,7 @@ ul > li {
     padding-top: 10px;
 }
 
-ol > li {
+ol> div> li  {
     padding-bottom: 10px;
     padding-top: 10px;
     font-weight: 200;
@@ -23,7 +23,7 @@ input[type=file]::file-selector-button, input[type=submit] {
     padding-right: 1%;
   }
 
-ol> li::marker {
+ol> div >li::marker {
     font-size: xx-large;
 }
 

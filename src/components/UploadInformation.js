@@ -46,6 +46,8 @@ const UploadInformation = () => {
 			.then((result) => {
 				console.log('Success:', result);
                 setAudioFileName(result.message);
+                var script = document.getElementById("script_section");
+                script.style.visibility = 'visible';
 			})
 			.catch((error) => {
 				console.error('Error:', error);
@@ -101,6 +103,8 @@ const UploadInformation = () => {
             .then(data => {
             console.log('Success:', data);
             setAudioFilePath(data.message);
+            var video = document.getElementById("video_section");
+            video.style.visibility = 'visible';
             })
             .catch((error) => {
             console.error('Error:', error);
@@ -202,30 +206,33 @@ const UploadInformation = () => {
     </div><div>
             <h2>Steps</h2>
             <Row>
-                <Col>
-                    <ol>
-                        <li>
-                                <h5>SELECT AUDIO</h5>
-                                <div id="uploaded_player">
-                                    <input type="file" accept="audio/*" id="source_audio" multiple onChange={changeAudioHandler}></input>
-                                </div>
-                                {isAudioFilePicked ? (
-                                    <div>
-                                        <p>Filename: {selectedAudioFile.name}</p>
-                                        <p>Filetype: {selectedAudioFile.type}</p>
-                                        <p>Size in bytes: {selectedAudioFile.size}</p>
-                                        <p>
-                                            lastModifiedDate:{' '}
-                                            {selectedAudioFile.lastModifiedDate.toLocaleDateString()}
-                                        </p>
+                <ol>
+                    <div id="audio_section">
+
+                            <li>
+                                    <h5>SELECT AUDIO</h5>
+                                    <div id="uploaded_player">
+                                        <input type="file" accept="audio/*" id="source_audio" multiple onChange={changeAudioHandler}></input>
                                     </div>
-                                ) : (
-                                    <p>Select a file to show details</p>
-                                )}
-                                
-                        </li>
-                        <br></br>
-                            <input type="submit" value="Upload Audio" onClick={handleAudioSubmission}></input>
+                                    {isAudioFilePicked ? (
+                                        <div>
+                                            <p>Filename: {selectedAudioFile.name}</p>
+                                            <p>Filetype: {selectedAudioFile.type}</p>
+                                            <p>Size in bytes: {selectedAudioFile.size}</p>
+                                            <p>
+                                                lastModifiedDate:{' '}
+                                                {selectedAudioFile.lastModifiedDate.toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        <p>Select a file to show details</p>
+                                    )}
+                                    
+                                </li>
+                            <br></br>
+                                <input type="submit" value="Upload Audio" onClick={handleAudioSubmission}></input>
+                        </div>
+
                         {/* or record audio
                         <br></br>
                         <p>OR</p>
@@ -235,36 +242,38 @@ const UploadInformation = () => {
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
                         <img id="record" src="./images/record_button.png"></img>
                         <h3 id="recording_label" hidden>RECORDING</h3> */}
-                        <li><h5>SELECT SCRIPT</h5></li>
-                        {/*}
-                        <textarea id="script_typed" name="script_typed" rows="4" cols="50" placeholder=" Type Script Here ...">
-                        </textarea>
-                        <br></br>*/}
-                        <div id="uploaded_player">
-                                    <input type="file" accept="text/*" id="source_script" multiple onChange={changeScriptHandler}></input>
-                                </div>
-                                {isScriptFilePicked ? (
-                                    <div>
-                                        <p>Filename: {selectedScriptFile.name}</p>
-                                        <p>Filetype: {selectedScriptFile.type}</p>
-                                        <p>Size in bytes: {selectedScriptFile.size}</p>
-                                        <p>
-                                            lastModifiedDate:{' '}
-                                            {selectedScriptFile.lastModifiedDate.toLocaleDateString()}
-                                        </p>
+                        <div id="script_section" style={{visibility: 'hidden'}}>
+                            <li><h5>SELECT SCRIPT</h5></li>
+                            {/*}
+                            <textarea id="script_typed" name="script_typed" rows="4" cols="50" placeholder=" Type Script Here ...">
+                            </textarea>
+                            <br></br>*/}
+                            <div id="uploaded_player">
+                                        <input type="file" accept="text/*" id="source_script" multiple onChange={changeScriptHandler}></input>
                                     </div>
-                                ) : (
-                                    <p>Select a file to show details</p>
-                                )}
-                        <br></br>
-                        <input type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
-                        <br></br>
-                        <br></br>
-                        <input type="submit" value="Generate Audio" onClick={generateAudio}></input>
-                    </ol>
-                </Col>
-                <Col>
-                    <ol start="3">
+                                    {isScriptFilePicked ? (
+                                        <div>
+                                            <p>Filename: {selectedScriptFile.name}</p>
+                                            <p>Filetype: {selectedScriptFile.type}</p>
+                                            <p>Size in bytes: {selectedScriptFile.size}</p>
+                                            <p>
+                                                lastModifiedDate:{' '}
+                                                {selectedScriptFile.lastModifiedDate.toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        <p>Select a file to show details</p>
+                                    )}
+                            <br></br>
+                            <input type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
+                            <br></br>
+                            <br></br>
+                            <input type="submit" value="Generate Audio" onClick={generateAudio}></input>
+                        </div>
+
+              
+                <div id="video_section" style={{visibility: 'hidden'}}>
+                   
                         <li><h5>SELECT VIDEO</h5><input type="file" id="source_vid" accept="video/*" name="source_vid" onChange={changeVideoHandler}></input></li>
                             {isVideoFilePicked ? (
                                     <div>
@@ -292,6 +301,7 @@ const UploadInformation = () => {
                         <br></br>
                         <input type="submit" value="Generate Video" onClick={generateVideo}></input>
                         <br></br>
+                    </div>
 
                     </ol>
                     {/* Output Verification
@@ -299,9 +309,9 @@ const UploadInformation = () => {
                     <h5>AUDIO OUTPUT VERIFICATION</h5>
                     <div class="sound-clips">
                             </div> */}
-                </Col>
-            </Row>
-        </div></>)
+              
+            </Row></div>
+        </>)
 }
 
 export default UploadInformation;
