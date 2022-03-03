@@ -24,8 +24,6 @@ const UploadInformation = () => {
 		setIsAudioFilePicked(true);
 	};
     const handleAudioSubmission = () => {
-        var script = document.getElementById("script_section");
-        script.style.visibility = 'visible';
         var name = selectedAudioFile.name.split(".")[0];
         var type = "."+selectedAudioFile.name.split(".")[1];
         var formData = new FormData();
@@ -48,6 +46,8 @@ const UploadInformation = () => {
 			.then((result) => {
 				console.log('Success:', result);
                 setAudioFileName(result.message);
+                var script = document.getElementById("script_section");
+                script.style.visibility = 'visible';
 			})
 			.catch((error) => {
 				console.error('Error:', error);
@@ -87,8 +87,6 @@ const UploadInformation = () => {
 			});
     }
     const generateAudio = () =>{
-        var video = document.getElementById("video_section");
-        video.style.visibility = 'visible';
         const data = {};
         data['scriptPath'] = scriptFileName;
         data['audioPath'] = audioFileName;
@@ -105,6 +103,8 @@ const UploadInformation = () => {
             .then(data => {
             console.log('Success:', data);
             setAudioFilePath(data.message);
+            var video = document.getElementById("video_section");
+            video.style.visibility = 'visible';
             })
             .catch((error) => {
             console.error('Error:', error);
