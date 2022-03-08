@@ -20,7 +20,7 @@
   font: 'Times New Roman';
 
 }
-  
+
   /* Clear floats after the columns */
   .row:after {
     padding-top: 10px;
@@ -29,4 +29,6 @@
     clear: both;
   }
 
-  
+.howitworks {
+  font-family: sans-serif;
+}
