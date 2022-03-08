@@ -16,19 +16,23 @@ function ProjectCreation () {
             </Row>
             <Row>
                 <Col>
-                    <a class="btn btn-primary options" href="/upload-information">Option 1:                
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+                    <a class="btn btn-primary options" href="/upload-information">
+                        <h3 className = "fastTitle"> Option 1: </h3>
+                        <img src="./images/fastGeneration_GettingStarted.png" alt="wrapkit" class="fastPlan" />
+                        <p class="fastDescription"> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
                     </a>
                 </Col>
                 <Col>
-                    <a class="btn btn-primary options" >Option 2:
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+                    <a class="btn btn-primary options" >
+                        <h3 className = "slowTitle"> Option 2: </h3>
+                        <img src="./images/slowGeneration_GettingStarted.png" alt="wrapkit" class="slowPlan" />
+                        <p class="slowDescription"> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
                     </a>
                 </Col>
             </Row>
         </div>
 
-       
+
         </>
     );
 
