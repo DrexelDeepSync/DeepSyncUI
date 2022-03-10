@@ -23,7 +23,7 @@ function ProjectCreation () {
                     </a>
                 </Col>
                 <Col>
-                    <a class="btn btn-primary options" >
+                    <a class="btn btn-primary options" href="/slow-audio">
                         <h3 className = "slowTitle"> Option 2: </h3>
                         <img src="./images/slowGeneration_GettingStarted.png" alt="wrapkit" class="slowPlan" />
                         <p class="slowDescription"> Are you looking to create your lecture content with a few days to spare? Choose our slow generation plan and get even more accurate videos! </p>
