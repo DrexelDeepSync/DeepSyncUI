@@ -7,6 +7,7 @@ import ProjectCreation from './components/ProjectCreation';
 import UploadInformation from './components/UploadInformation';
 import GettingStarted from './components/GettingStarted';
 import Plans from './components/Plans';
+import SlowAudio from './components/SlowAudio';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/about" component={Team} />
           <Route exact path="/project-creation" component={ProjectCreation} />
           <Route exact path="/upload-information" component={UploadInformation} />
+          <Route exact path="/slow-audio" component={SlowAudio}/>
 
         </Switch>
         <HeroSection></HeroSection>

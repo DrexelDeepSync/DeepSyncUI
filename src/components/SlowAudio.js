@@ -1,13 +1,12 @@
 import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {  Row, Col } from "react-bootstrap";
-import './UploadInformation.css';
-import * as ReactBootStrap from "react-bootstrap";
+import './SlowAudio.css';
+import * as ReactBootStrap from 'react-bootstrap'; 
 //import './Record.js';
 
-
 const url = 'http://54.226.245.141:8080';
-const UploadInformation = () => {
+const SlowAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
     const [selectedVideoFile, setSelectedVideoFile] = useState();
@@ -18,7 +17,6 @@ const UploadInformation = () => {
     const [scriptFileName, setScriptFileName] = useState();
     const [videoFileName, setVideoFileName] = useState();
     const [audioFilePath, setAudioFilePath] = useState();
-    const [videoFileLink, setVideoFileLink] = useState();
     const [loading, setLoading] = useState(true);
     const changeAudioHandler = (event) => {
 		setSelectedAudioFile(event.target.files[0]);
@@ -27,18 +25,18 @@ const UploadInformation = () => {
     const handleAudioSubmission = () => {
         var name = selectedAudioFile.name.split(".")[0];
         var type = "."+selectedAudioFile.name.split(".")[1];
-        var formData = new FormData();
         var audio_url = url + '/uploadfile';
+        var formData = new FormData();
         console.log(formData)
 		formData.append('file', selectedAudioFile);
         formData.append('fileName', name);
-        formData.append('fileType', type); 
+        formData.append('fileType', type);
         for (var key of formData.entries()) {
                 console.log(key);
             }
 
 		fetch(
-			audio_url,
+		    audio_url,
 			{
 				method: 'POST',
 				body: formData,
@@ -63,7 +61,7 @@ const UploadInformation = () => {
         var scriptName = selectedScriptFile.name.split(".")[0];
         var scriptType = "."+selectedScriptFile.name.split(".")[1];
         var formData = new FormData();
-        var script_audio = url + '/uploadfile';
+        var script_url = url + '/uploadfile'; 
         console.log(formData)
 		formData.append('file', selectedScriptFile);
         formData.append('fileName', scriptName);
@@ -73,7 +71,7 @@ const UploadInformation = () => {
             }
 
 		fetch(
-			script_audio,
+			script_url,
 			{
 				method: 'POST',
 				body: formData,
@@ -93,12 +91,12 @@ const UploadInformation = () => {
     }
     const generateAudio = () =>{
         const data = {};
-        var generate_audio = url + '/fastaudio/generate';
+        var generate_url = url + '/slowaudio/generate';
         data['scriptPath'] = scriptFileName;
         data['audioPath'] = audioFileName;
         console.log(data);
 
-        fetch(generate_audio, {
+        fetch(generate_url, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -158,7 +156,7 @@ const UploadInformation = () => {
     }
     const generateVideo = async () => {
         const data = {};
-        var audio_visual_url = url + '/audiovisual/generate';
+        var generate_video_url = url + '/audiovisual/generate';
         data['audioPath'] = audioFilePath;
         data['videoPath'] = videoFileName;
         console.log(data);
@@ -166,7 +164,7 @@ const UploadInformation = () => {
         var windowObjectReference;
         var windowFeatures = "popup";
         setLoading(false);
-        const generation = await fetch(audio_visual_url, {
+        const generation = await fetch(generate_video_url, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -179,6 +177,7 @@ const UploadInformation = () => {
             windowObjectReference = window.open(url+'/'+data.message, "Result", windowFeatures);
             setLoading(true);
             })
+            
             .catch((error) => {
             console.error('Error:', error);
         });
@@ -217,30 +216,7 @@ const UploadInformation = () => {
             <Row>
                 <Col>
                     <ol>
-                        <div id="audio_section">
-                            <li>
-                                <h5>SELECT AUDIO</h5>
-                                <div id="uploaded_player">
-                                    <input type="file" accept="audio/*" id="source_audio" multiple onChange={changeAudioHandler}></input>
-                                </div>
-                                {isAudioFilePicked ? (
-                                    <div>
-                                        <p>Filename: {selectedAudioFile.name}</p>
-                                        <p>Filetype: {selectedAudioFile.type}</p>
-                                        <p>Size in bytes: {selectedAudioFile.size}</p>
-                                        <p>
-                                            lastModifiedDate:{' '}
-                                            {selectedAudioFile.lastModifiedDate.toLocaleDateString()}
-                                        </p>
-                                    </div>
-                                ) : (
-                                    <p>Select a file to show details</p>
-                                )}
-                                
-                            </li>
-                            <br></br>
-                            <input type="submit" value="Upload Audio" onClick={handleAudioSubmission}></input>
-                        </div>
+                        
                         {/* or record audio
                         <br></br>
                         <p>OR</p>
@@ -250,7 +226,7 @@ const UploadInformation = () => {
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
                         <img id="record" src="./images/record_button.png"></img>
                         <h3 id="recording_label" hidden>RECORDING</h3> */}
-                        <div id="script_section"  style={{visibility: 'hidden'}}>
+                        <div id="script_section">
                             <li><h5>SELECT SCRIPT</h5></li>
                             {/*}
                             <textarea id="script_typed" name="script_typed" rows="4" cols="50" placeholder=" Type Script Here ...">
@@ -281,7 +257,7 @@ const UploadInformation = () => {
                     </ol>
                 </Col>
                 <Col>
-                    <ol start="3">
+                    <ol start="2">
                         <div id="video_section"  style={{visibility: 'hidden'}}>
                             <li><h5>SELECT VIDEO</h5><input type="file" id="source_vid" accept="video/*" name="source_vid" onChange={changeVideoHandler}></input></li>
                                 {isVideoFilePicked ? (
@@ -323,4 +299,4 @@ const UploadInformation = () => {
         </div></>)
 }
 
-export default UploadInformation;
+export default SlowAudio;

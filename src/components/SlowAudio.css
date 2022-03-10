@@ -1,0 +1,40 @@
+ul > li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+ol > div > li {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: 200;
+}
+
+input {
+    padding-left: 10px;
+}
+
+
+input[type=file]::file-selector-button, input[type=submit] {
+    color:rgb(47, 149, 197);
+    border: 2px solid rgb(47, 149, 197); 
+    font-family: sans-serif;
+    text-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+
+ol > div > li::marker {
+    font-size: xx-large;
+}
+
+textarea#script_typed {
+    border:solid rgb(47, 149, 197);
+}
+
+img#record {
+    width:20%;
+}
+
+#recording_label {
+    color: red;
+}

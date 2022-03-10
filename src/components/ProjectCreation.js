@@ -21,7 +21,7 @@ function ProjectCreation () {
                     </a>
                 </Col>
                 <Col>
-                    <a class="btn btn-primary options" >Option 2:
+                    <a class="btn btn-primary options" href="/slow-audio">Option 2:
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
                     </a>
                 </Col>
