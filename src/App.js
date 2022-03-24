@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import HeroSection from './components/HeroSection';
 import Team from './components/Team';
 import ProjectCreation from './components/ProjectCreation';
-import UploadInformation from './components/UploadInformation';
+import FastAudio from './components/FastAudio';
 import GettingStarted from './components/GettingStarted';
 import Plans from './components/Plans';
 import SlowAudio from './components/SlowAudio';
@@ -17,16 +17,17 @@ function App() {
         <Switch>
           <Route exact path = '/'/>
           <Route exact path="/about" component={Team} />
+          <Route exact path="/getting-started" component={GettingStarted} />
           <Route exact path="/project-creation" component={ProjectCreation} />
-          <Route exact path="/upload-information" component={UploadInformation} />
+          <Route exact path="/fast-audio" component={FastAudio} />
           <Route exact path="/slow-audio" component={SlowAudio}/>
 
         </Switch>
-        <HeroSection></HeroSection>
+    {/*     <HeroSection></HeroSection>
         <GettingStarted></GettingStarted>
         <Plans></Plans>
         <Team></Team>
-        <ProjectCreation></ProjectCreation>
+        <ProjectCreation></ProjectCreation> */}
       </Router>
     </>
   );
