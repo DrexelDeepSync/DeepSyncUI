@@ -16,12 +16,9 @@ function Card({title, imageUrl, body, link}) {
           <p>{body}</p>
       </div>
       <div className='btn'>
-        <Link
-        role="button"
-        to={link}
-        > 
-        View More
-        </Link>
+        <Button component={Link} link={link}>
+          View More
+        </Button>
       </div>
   </div>;
 }

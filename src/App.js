@@ -14,8 +14,10 @@ function App() {
     <>
       <Router>
         <Navbar />
+        
+  
         <Switch>
-          <Route exact path = '/'/>
+          <Route exact path = '/' component={HeroSection}/>
           <Route exact path="/about" component={Team} />
           <Route exact path="/getting-started" component={GettingStarted} />
           <Route exact path="/project-creation" component={ProjectCreation} />
@@ -23,7 +25,7 @@ function App() {
           <Route exact path="/slow-audio" component={SlowAudio}/>
 
         </Switch>
-    {/*     <HeroSection></HeroSection>
+        {     /*<HeroSection></HeroSection>
         <GettingStarted></GettingStarted>
         <Plans></Plans>
         <Team></Team>
