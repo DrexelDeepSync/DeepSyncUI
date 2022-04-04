@@ -1,8 +1,10 @@
 import React from 'react';
 import './Card.css';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
-function Card({title, imageUrl, body}) {
+
+function Card({title, imageUrl, body, link}) {
   return <div className='card-container'>
       <div className='image-container'>
           <img src={imageUrl} alt=''/>
@@ -14,7 +16,9 @@ function Card({title, imageUrl, body}) {
           <p>{body}</p>
       </div>
       <div className='btn'>
-          <Button>View More</Button>
+        <Button component={Link} link={link}>
+          View More
+        </Button>
       </div>
   </div>;
 }

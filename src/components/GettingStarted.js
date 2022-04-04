@@ -1,5 +1,8 @@
 import React from 'react';
 import './GettingStarted.css';
+import Card from './Card';
+import Button from './Button';
+import Plans from './Plans';
 
 const GettingStarted = () => {
   return <><div class="row">
@@ -19,6 +22,7 @@ const GettingStarted = () => {
   <h2>Choose from our 2 Plans</h2>
   <p>Choose from our 2 plans depending on how much time you have in your schedule. </p>
 </div>
+<Plans></Plans>
 </>;
 };
 

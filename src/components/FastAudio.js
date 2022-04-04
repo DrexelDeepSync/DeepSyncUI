@@ -1,13 +1,13 @@
 import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {  Row, Col } from "react-bootstrap";
-import './UploadInformation.css';
+import './FastAudio.css';
 import * as ReactBootStrap from "react-bootstrap";
 //import './Record.js';
 
 
 const url = 'http://54.226.245.141:8080';
-const UploadInformation = () => {
+const FastAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
     const [selectedVideoFile, setSelectedVideoFile] = useState();
@@ -323,4 +323,4 @@ const UploadInformation = () => {
         </div></>)
 }
 
-export default UploadInformation;
+export default FastAudio;
