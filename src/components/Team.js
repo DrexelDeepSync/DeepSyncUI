@@ -39,7 +39,7 @@ const Team = () => {
 
         <div className="row">
           <div className="col-md-12">
-            <img src="./images/allie.JPG" alt="wrapkit" className="img-fluid rounded-circle" />
+            <img src="./images/allie.jpg" alt="wrapkit" className="img-fluid rounded-circle" />
           </div>
           <div className="col-md-12 text-center">
             <div className="pt-2">
@@ -145,7 +145,7 @@ const Team = () => {
 
         <div className="row">
           <div className="col-md-12">
-            <img src="./images/victoria.JPG" alt="wrapkit" className="img-fluid rounded-circle" />
+            <img src="./images/victoria.jpg" alt="wrapkit" className="img-fluid rounded-circle" />
           </div>
           <div className="col-md-12 text-center">
             <div className="pt-2">
