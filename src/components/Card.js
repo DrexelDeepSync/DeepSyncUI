@@ -17,7 +17,7 @@ function Card({title, imageUrl, body, link}) {
       </div>
       <div className='btn'>
         <Button component={Link} link={link}>
-          View More
+          Begin
         </Button>
       </div>
   </div>;

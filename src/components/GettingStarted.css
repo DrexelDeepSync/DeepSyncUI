@@ -21,6 +21,13 @@
 
 }
 
+button.btn{
+  color:rgb(47, 149, 197);
+  border: 2px solid rgb(47, 149, 197);
+  font-family: sans-serif;
+  text-align: center;
+}
+
   /* Clear floats after the columns */
   .row:after {
     padding-top: 10px;

@@ -3,9 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {  Row, Col } from "react-bootstrap";
 import './SlowAudio.css';
 import * as ReactBootStrap from 'react-bootstrap'; 
+import CollapsibleSection from './CollapsibleSection';
 //import './Record.js';
 
-const url = 'http://34.229.0.240:8080';
+const url = 'http://34.195.49.83:5000/';
 const SlowAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
@@ -17,11 +18,52 @@ const SlowAudio = () => {
     const [scriptFileName, setScriptFileName] = useState();
     const [videoFileName, setVideoFileName] = useState();
     const [audioFilePath, setAudioFilePath] = useState();
-    const [loading, setLoading] = useState(true);
+    const [scriptLoading, setScriptLoading] = useState(true);
+    const [audioLoading, setAudioLoading] = useState(true);
+    const [videoLoading, setVideoLoading] = useState(true);
+    const changeScriptHandler = (event) => {
+        setSelectedScriptFile(event.target.files[0]);
+		setIsScriptFilePicked(true);
+    }
+    const handleScriptSubmission = () => {
+        var scriptName = selectedScriptFile.name.split(".")[0];
+        var scriptType = "."+selectedScriptFile.name.split(".")[1];
+        var formData = new FormData();
+        var script_url = url + '/uploadfile'; 
+        console.log(formData)
+        setScriptLoading(true);
+		formData.append('file', selectedScriptFile);
+        formData.append('fileName', scriptName);
+        formData.append('fileType', scriptType); 
+        for (var key of formData.entries()) {
+                console.log(key);
+            }
+
+		fetch(
+			script_url,
+			{
+				method: 'POST',
+				body: formData,
+
+			}
+		)
+			.then((response) => response.json())
+			.then((result) => {
+				console.log('Success:', result);
+                setScriptFileName(result.message);
+                setScriptLoading(false);
+                var audio_section = document.getElementById("audio_section");
+                audio_section.style.visibility = 'visible';
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+    }
     const changeAudioHandler = (event) => {
 		setSelectedAudioFile(event.target.files[0]);
 		setIsAudioFilePicked(true);
 	};
+    /** 
     const handleAudioSubmission = () => {
         var name = selectedAudioFile.name.split(".")[0];
         var type = "."+selectedAudioFile.name.split(".")[1];
@@ -46,55 +88,21 @@ const SlowAudio = () => {
 			.then((result) => {
 				console.log('Success:', result);
                 setAudioFileName(result.message);
-                var script = document.getElementById("script_section");
-                script.style.visibility = 'visible';
+                //var script = document.getElementById("script_section");
+                //script.style.visibility = 'visible';
 			})
 			.catch((error) => {
 				console.error('Error:', error);
 			});
 	};
-    const changeScriptHandler = (event) => {
-        setSelectedScriptFile(event.target.files[0]);
-		setIsScriptFilePicked(true);
-    }
-    const handleScriptSubmission = () => {
-        var scriptName = selectedScriptFile.name.split(".")[0];
-        var scriptType = "."+selectedScriptFile.name.split(".")[1];
-        var formData = new FormData();
-        var script_url = url + '/uploadfile'; 
-        console.log(formData)
-		formData.append('file', selectedScriptFile);
-        formData.append('fileName', scriptName);
-        formData.append('fileType', scriptType); 
-        for (var key of formData.entries()) {
-                console.log(key);
-            }
-
-		fetch(
-			script_url,
-			{
-				method: 'POST',
-				body: formData,
-
-			}
-		)
-			.then((response) => response.json())
-			.then((result) => {
-				console.log('Success:', result);
-                setScriptFileName(result.message);
-                var audio_button = document.getElementById("gen_audio");
-                audio_button.style.visibility = 'visible';
-			})
-			.catch((error) => {
-				console.error('Error:', error);
-			});
-    }
+    */
     const generateAudio = () =>{
         const data = {};
         var generate_url = url + '/slowaudio/generate';
         data['scriptPath'] = scriptFileName;
         data['audioPath'] = audioFileName;
         console.log(data);
+        setAudioLoading(true);
 
         fetch(generate_url, {
             method: 'POST', // or 'PUT'
@@ -107,6 +115,7 @@ const SlowAudio = () => {
             .then(data => {
             console.log('Success:', data);
             setAudioFilePath(data.message);
+            setAudioLoading(false);
             var video = document.getElementById("video_section");
             video.style.visibility = 'visible';
             })
@@ -163,7 +172,7 @@ const SlowAudio = () => {
         console.log(url);
         var windowObjectReference;
         var windowFeatures = "popup";
-        setLoading(false);
+        setVideoLoading(false);
         const generation = await fetch(generate_video_url, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -175,7 +184,7 @@ const SlowAudio = () => {
             .then(data => {
             console.log('Success:', data);
             windowObjectReference = window.open(url+'/'+data.message, "Result", windowFeatures);
-            setLoading(true);
+            setVideoLoading(true);
             })
             
             .catch((error) => {
@@ -185,38 +194,50 @@ const SlowAudio = () => {
 
     return (<>
     <div>
-        <h1 class="headers">Upload Information</h1>
+        <Row>
+            <h1 className="headers">Create Your Lecture</h1>
+        </Row>
         <Row>
             <Col>
-        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
+                <p>Upload your files below to begin the process. 
+                    <br></br>
+                    For best results, read and follow the requirements at each step.</p>
             </Col>
             <Col>
             </Col>
         </Row>
-        <Row>
+        <Row className="collapsible-row">
             <Col>
-                <h3 class="headers">Video Requirements</h3>
-                <ul>
-                    <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut  </li>
-                    <li>sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</li>
-                    <li>sed quia consequuntur magni dolores eos qui ratione voluptatem</li>
-                </ul>
+                <CollapsibleSection name="script_reqs" defaultExpanded title="Script Requirements" >
+                    <ul>
+                        <li>Remove any undesired content, such as "Slide 1" or references.</li>
+                        <li>Ensure that everything is spelled correctly.</li>
+                    </ul>
+                </CollapsibleSection>
             </Col>
             <Col>
-                <h3 class="headers">Audio Requirements</h3>
-                <ul>
-                    <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut  </li>
-                    <li>sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</li>
-                    <li>sed quia consequuntur magni dolores eos qui ratione voluptatem</li>
-                </ul>
+                <CollapsibleSection id="audio_reqs" title="Audio Requirements">
+                    <ul>
+                        <li>Record your audio with as little background noise as possible.</li>
+                        <li>Record at least 35 minutes of talking with few to no long pauses.</li>
+                        <li>Ensure only your voice can be heard in the recording.</li>
+                        <li>Ensure you spoke loudly and clearly throughout the recording.</li>
+                    </ul>
+                </CollapsibleSection>
+            </Col>
+            <Col>
+                <CollapsibleSection id="video_reqs" title="Video Requirements">
+                    <ul>
+                        <li>Ensure you are looking straight at the camera.</li>
+                        <li>Ensure your full face is clearly visible at all times.</li>
+                        <li>Though optional, small movements in the video can make the final video look more natural.</li>
+                    </ul>
+                </CollapsibleSection>
             </Col>
         </Row>
-    </div><div>
-            <h2>Steps</h2>
             <Row>
                 <Col>
                     <ol>
-                        
                         {/* or record audio
                         <br></br>
                         <p>OR</p>
@@ -227,39 +248,44 @@ const SlowAudio = () => {
                         <img id="record" src="./images/record_button.png"></img>
                         <h3 id="recording_label" hidden>RECORDING</h3> */}
                         <div id="script_section">
-                            <li><h5>SELECT SCRIPT</h5></li>
+                            <li><h5>Upload Script</h5></li>
                             {/*}
                             <textarea id="script_typed" name="script_typed" rows="4" cols="50" placeholder=" Type Script Here ...">
                             </textarea>
                             <br></br>*/}
-                            <div id="uploaded_player">
-                                        <input type="file" accept="text/*" id="source_script" multiple onChange={changeScriptHandler}></input>
-                                    </div>
-                                    {isScriptFilePicked ? (
-                                        <div>
-                                            <p>Filename: {selectedScriptFile.name}</p>
-                                            <p>Filetype: {selectedScriptFile.type}</p>
-                                            <p>Size in bytes: {selectedScriptFile.size}</p>
-                                            <p>
-                                                lastModifiedDate:{' '}
-                                                {selectedScriptFile.lastModifiedDate.toLocaleDateString()}
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <p>Select a file to show details</p>
-                                    )}
-                            <br></br>
+                            <input type="file" accept="text/*" id="source_script" multiple onChange={changeScriptHandler}></input>
+                            {isScriptFilePicked ? (
+                                <div>
+                                    <p>Name: {selectedScriptFile.name}</p>
+                                    <p>Type: {selectedScriptFile.type.split("/")[0]}</p>
+                                    <p>Size: {selectedScriptFile.size} bytes</p>
+                                    <p>
+                                        Last Modified:{' '}
+                                        {selectedScriptFile.lastModifiedDate.toLocaleDateString()}
+                                    </p>
+                                </div>
+                            ) : (
+                                <p>Select a file to show details</p>
+                            )}
                             <input type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
+                            <div>{scriptLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
                             <br></br>
                             <br></br>
-                            <input id="gen_audio" type="submit" value="Generate Audio" onClick={generateAudio}  style={{visibility: 'hidden'}}></input>
                         </div>
                     </ol>
                 </Col>
                 <Col>
                     <ol start="2">
+                        <div id="audio_section" style={{visibility: 'hidden'}}>
+                            <li><h5>Generate Audio</h5></li>
+                            <input id="gen_audio" type="submit" value="Generate Audio" onClick={generateAudio}></input>
+                        </div>
+                    </ol>
+                </Col>
+                <Col>
+                    <ol start="3">
                         <div id="video_section"  style={{visibility: 'hidden'}}>
-                            <li><h5>SELECT VIDEO</h5><input type="file" id="source_vid" accept="video/*" name="source_vid" onChange={changeVideoHandler}></input></li>
+                            <li><h5>Select Video</h5><input type="file" id="source_vid" accept="video/*" name="source_vid" onChange={changeVideoHandler}></input></li>
                                 {isVideoFilePicked ? (
                                         <div>
                                             <p>Filename: {selectedVideoFile.name}</p>
@@ -285,18 +311,19 @@ const SlowAudio = () => {
                             <br></br>
                             <br></br>
                             <input id="gen_video" type="submit" value="Generate Video" onClick={generateVideo} style={{visibility: 'hidden'}}></input>
-                            <div>{loading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
+                            <div>{videoLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
                             <br></br>
                         </div>
                     </ol>
                     {/* Output Verification
                     <br></br>
                     <h5>AUDIO OUTPUT VERIFICATION</h5>
-                    <div class="sound-clips">
+                    <div className="sound-clips">
                             </div> */}
                 </Col>
             </Row>
-        </div></>)
+            </div>
+        </>)
 }
 
 export default SlowAudio;

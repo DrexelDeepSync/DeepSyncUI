@@ -9,9 +9,11 @@ ol > div > li {
     font-weight: 200;
 }
 
+/**
 input {
     padding-left: 10px;
 }
+**/
 
 
 input[type=file]::file-selector-button, input[type=submit] {
@@ -37,4 +39,11 @@ img#record {
 
 #recording_label {
     color: red;
+}
+
+@media screen and (max-width: 600px) {
+    .collapsible-row .col {
+        display: block;
+        flex: none;
+    }
 }

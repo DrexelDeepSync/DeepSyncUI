@@ -186,7 +186,7 @@ const FastAudio = () => {
 
     return (<>
     <div>
-        <h1 class="headers">Upload Information</h1>
+        <h1 className="headers">Upload Information</h1>
         <Row>
             <Col>
         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
@@ -196,7 +196,7 @@ const FastAudio = () => {
         </Row>
         <Row>
             <Col>
-                <h3 class="headers">Video Requirements</h3>
+                <h3 className="headers">Video Requirements</h3>
                 <ul>
                     <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut  </li>
                     <li>sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</li>
@@ -204,7 +204,7 @@ const FastAudio = () => {
                 </ul>
             </Col>
             <Col>
-                <h3 class="headers">Audio Requirements</h3>
+                <h3 className="headers">Audio Requirements</h3>
                 <ul>
                     <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut  </li>
                     <li>sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</li>
@@ -316,7 +316,7 @@ const FastAudio = () => {
                     {/* Output Verification
                     <br></br>
                     <h5>AUDIO OUTPUT VERIFICATION</h5>
-                    <div class="sound-clips">
+                    <div className="sound-clips">
                             </div> */}
                 </Col>
             </Row>
