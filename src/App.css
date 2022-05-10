@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .App {
   text-align: center;
 }
@@ -14,14 +16,14 @@
 }
 
 .App-header {
+  align-items: center;
   background-color: #282c34;
-  min-height: 100vh;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .App-link {
@@ -38,49 +40,63 @@
 }
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  /*mmargin-bottom: 20px !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  margin-top: 20px !important;*/
   font-family: 'PT Sans', sans-serif;
+}
+
+.bodyDiv {
+  margin-bottom: 4%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 4%;
 }
 
 .home,
 .services,
 .products,
 .sign-up {
-  display: flex;
-  height: 90vh;
   align-items: center;
-  justify-content: center;
+  display: flex;
   font-size: 3rem;
+  height: 90vh;
+  justify-content: center;
 }
 
 .services {
+  color: #fff;
   background-image: url('../public/images/img-2.jpg');
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
-  color: #fff;
+  background-size: cover;
   font-size: 100px;
 }
 
 .products {
+  color: #fff;
   background-image: url('../public/images/img-1.jpg');
   background-position: center;
-  background-size: fill;
   background-repeat: no-repeat;
-  color: #fff;
+  background-size: fill;
   font-size: 100px;
 }
+
 
 .sign-up {
   background-image: url('../public/images/img-8.jpg');
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
   font-size: 100px;
 }
 
 .row {
   padding: 1%;
+  /*margin-bottom: 20px !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  margin-top: 20px !important;*/
 }
