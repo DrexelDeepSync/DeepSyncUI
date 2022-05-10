@@ -6,7 +6,7 @@ import * as ReactBootStrap from 'react-bootstrap';
 import CollapsibleSection from './CollapsibleSection';
 //import './Record.js';
 
-const url = 'http://34.195.49.83:5000/';
+const url = 'http://172.31.19.202:8080/';
 const SlowAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
@@ -267,7 +267,7 @@ const SlowAudio = () => {
                             ) : (
                                 <p>Select a file to show details</p>
                             )}
-                            <input type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
+                            <input id="upload-script-button" type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
                             <div>{scriptLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
                             <br></br>
                             <br></br>
@@ -300,7 +300,7 @@ const SlowAudio = () => {
                                         <p>Select a file to show details</p>
                                     )}
                                 <br></br>
-                                <input type="submit" value="Upload Video" onClick={handleVideoSubmission}></input>
+                                <input id="upload-video-button" type="submit" value="Upload Video" onClick={handleVideoSubmission}></input>
                                     {/* Or record video 
                                 <br></br>
                                 <p>OR</p>

@@ -6,7 +6,7 @@ import * as ReactBootStrap from "react-bootstrap";
 //import './Record.js';
 
 
-const url = 'http://54.226.245.141:8080';
+const url = 'http://172.31.19.202:8080/';
 const FastAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
