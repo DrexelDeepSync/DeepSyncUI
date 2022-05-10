@@ -6,7 +6,7 @@ import * as ReactBootStrap from 'react-bootstrap';
 import CollapsibleSection from './CollapsibleSection';
 //import './Record.js';
 
-const url = 'http://172.31.19.202:8080/';
+const url = 'http://44.198.103.58:8080/';
 const SlowAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
