@@ -288,11 +288,11 @@ const SlowAudio = () => {
                             <li><h5>Select Video</h5><input type="file" id="source_vid" accept="video/*" name="source_vid" onChange={changeVideoHandler}></input></li>
                                 {isVideoFilePicked ? (
                                         <div>
-                                            <p>Filename: {selectedVideoFile.name}</p>
-                                            <p>Filetype: {selectedVideoFile.type}</p>
-                                            <p>Size in bytes: {selectedVideoFile.size}</p>
+                                            <p>Name: {selectedVideoFile.name}</p>
+                                            <p>Type: {selectedVideoFile.type.split("/")[0]}</p>
+                                            <p>Size: {selectedVideoFile.size} bytes</p>
                                             <p>
-                                                lastModifiedDate:{' '}
+                                                Last Modified:{' '}
                                                 {selectedVideoFile.lastModifiedDate.toLocaleDateString()}
                                             </p>
                                         </div>
