@@ -6,7 +6,7 @@ import * as ReactBootStrap from 'react-bootstrap';
 import CollapsibleSection from './CollapsibleSection';
 //import './Record.js';
 
-const url = 'http://34.195.49.83:5000/';
+const url = 'http://44.198.103.58:8080/';
 const SlowAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
@@ -20,7 +20,8 @@ const SlowAudio = () => {
     const [audioFilePath, setAudioFilePath] = useState();
     const [scriptLoading, setScriptLoading] = useState(true);
     const [audioLoading, setAudioLoading] = useState(true);
-    const [videoLoading, setVideoLoading] = useState(true);
+    const [uploadVideoLoading, setUploadVideoLoading] = useState(true);
+    const [generateVideoLoading, setGenerateVideoLoading] = useState(true);
     const changeScriptHandler = (event) => {
         setSelectedScriptFile(event.target.files[0]);
 		setIsScriptFilePicked(true);
@@ -31,7 +32,7 @@ const SlowAudio = () => {
         var formData = new FormData();
         var script_url = url + '/uploadfile'; 
         console.log(formData)
-        setScriptLoading(true);
+        setScriptLoading(false);
 		formData.append('file', selectedScriptFile);
         formData.append('fileName', scriptName);
         formData.append('fileType', scriptType); 
@@ -51,9 +52,9 @@ const SlowAudio = () => {
 			.then((result) => {
 				console.log('Success:', result);
                 setScriptFileName(result.message);
-                setScriptLoading(false);
                 var audio_section = document.getElementById("audio_section");
                 audio_section.style.visibility = 'visible';
+                setScriptLoading(true);
 			})
 			.catch((error) => {
 				console.error('Error:', error);
@@ -102,7 +103,7 @@ const SlowAudio = () => {
         data['scriptPath'] = scriptFileName;
         data['audioPath'] = audioFileName;
         console.log(data);
-        setAudioLoading(true);
+        setAudioLoading(false);
 
         fetch(generate_url, {
             method: 'POST', // or 'PUT'
@@ -115,7 +116,7 @@ const SlowAudio = () => {
             .then(data => {
             console.log('Success:', data);
             setAudioFilePath(data.message);
-            setAudioLoading(false);
+            setAudioLoading(true);
             var video = document.getElementById("video_section");
             video.style.visibility = 'visible';
             })
@@ -139,6 +140,7 @@ const SlowAudio = () => {
 		formData.append('file', selectedVideoFile);
         formData.append('fileName', videoName);
         formData.append('fileType', videoType); 
+        setUploadVideoLoading(false);
         for (var key of formData.entries()) {
                 console.log(key);
             }
@@ -158,6 +160,7 @@ const SlowAudio = () => {
                 setVideoFileName(result.message);
                 var video_button = document.getElementById("gen_video");
                 video_button.style.visibility = 'visible';
+                setUploadVideoLoading(true);
 			})
 			.catch((error) => {
 				console.error('Error:', error);
@@ -172,7 +175,7 @@ const SlowAudio = () => {
         console.log(url);
         var windowObjectReference;
         var windowFeatures = "popup";
-        setVideoLoading(false);
+        setGenerateVideoLoading(false);
         const generation = await fetch(generate_video_url, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -184,7 +187,7 @@ const SlowAudio = () => {
             .then(data => {
             console.log('Success:', data);
             windowObjectReference = window.open(url+'/'+data.message, "Result", windowFeatures);
-            setVideoLoading(true);
+            setGenerateVideoLoading(true);
             })
             
             .catch((error) => {
@@ -267,7 +270,7 @@ const SlowAudio = () => {
                             ) : (
                                 <p>Select a file to show details</p>
                             )}
-                            <input type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
+                            <input id="upload-script-button" type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
                             <div>{scriptLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
                             <br></br>
                             <br></br>
@@ -279,6 +282,8 @@ const SlowAudio = () => {
                         <div id="audio_section" style={{visibility: 'hidden'}}>
                             <li><h5>Generate Audio</h5></li>
                             <input id="gen_audio" type="submit" value="Generate Audio" onClick={generateAudio}></input>
+                            <br></br>
+                            <div>{audioLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
                         </div>
                     </ol>
                 </Col>
@@ -299,8 +304,10 @@ const SlowAudio = () => {
                                     ) : (
                                         <p>Select a file to show details</p>
                                     )}
+                                <input id="upload-video-button" type="submit" value="Upload Video" onClick={handleVideoSubmission}></input>
                                 <br></br>
-                                <input type="submit" value="Upload Video" onClick={handleVideoSubmission}></input>
+                                <div>{uploadVideoLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
+                                
                                     {/* Or record video 
                                 <br></br>
                                 <p>OR</p>
@@ -311,7 +318,8 @@ const SlowAudio = () => {
                             <br></br>
                             <br></br>
                             <input id="gen_video" type="submit" value="Generate Video" onClick={generateVideo} style={{visibility: 'hidden'}}></input>
-                            <div>{videoLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
+                            <br></br>
+                            <div>{generateVideoLoading? '' : <ReactBootStrap.Spinner animation="border" />}</div>
                             <br></br>
                         </div>
                     </ol>

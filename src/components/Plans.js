@@ -7,7 +7,7 @@ function Plans() {
   return <>
   <Row>
     <Col>
-      <Card title='Create A Lecture' body='Prepare your script, audio, and video, and then click Begin!' link='/slow-audio'></Card>
+      <Card className='plans-card' title='Create A Lecture' body='Prepare your script, audio, and video, and then click Begin!' imageUrl='/images/zoomLecture_card_HOWITWORKS.jpg'  link='/slow-audio'></Card>
     </Col>
   </Row>
 </>;

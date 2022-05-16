@@ -9,7 +9,7 @@ export default class FullNavbar extends React.Component {
     return (
       <Navbar collapseOnSelect expand='sm'>
         <Navbar.Brand href="/">
-          <img src="./images/DeepSync_logo.png" width="100px" height="100px"></img>
+          <img src="./images/logo_Transparent_WHITEBG.png" width="250px" height="50px"></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' className="ms-auto"/>
         <Navbar.Collapse id='responsive-navbar-nav' className="ms-auto text-end">

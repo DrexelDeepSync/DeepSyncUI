@@ -12,7 +12,7 @@ function App() {
     <>
       <Router>
         <FullNavbar />
-  
+        <div className='bodyDiv'>
         <Switch>
           <Route exact path = '/' component={HeroSection}/>
           <Route exact path="/about" component={Team} />
@@ -26,6 +26,7 @@ function App() {
         <Plans></Plans>
         <Team></Team>
         <ProjectCreation></ProjectCreation> */}
+        </div>
       </Router>
     </>
   );

@@ -1,41 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=');
+
 .column {
     float: left;
     width: 50%;
-
   }
+
 .column > h3 {
-    padding-top: 10px;
     color: rgb(0, 0, 0);
     font-family: 'Times New Roman', Times, serif;
     padding: 8px 20px;
-    transition: all 0.3s ease-out;
+    padding-top: 10px;
     text-align: center;
+    transition: all 0.3s ease-out;
 }
 .column > p {
   display: block;
-  margin-top: 1em;
+  font: 'Times New Roman';
   margin-bottom: 1em;
   margin-left: 0;
   margin-right: 0;
-  font: 'Times New Roman';
+  margin-top: 1em;
 
 }
 
 button.btn{
-  color:rgb(47, 149, 197);
-  border: 2px solid rgb(47, 149, 197);
+  background-color: #18A0FB !important;
+  color:white;
   font-family: sans-serif;
   text-align: center;
 }
 
   /* Clear floats after the columns */
   .row:after {
-    padding-top: 10px;
+    clear: both;
     content: "";
     display: table;
-    clear: both;
+    padding-top: 10px;
   }
 
 .howitworks {
-  font-family: sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bolder;
+  margin-right: 20px !important;
+  margin-bottom: 20px;
+}
+
+.howitworks-vid {
+  position: inherit;
+}
+
+.getstartednow-title {
+  margin-top: 50px !important;
 }

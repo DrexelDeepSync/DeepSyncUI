@@ -6,7 +6,7 @@ import * as ReactBootStrap from "react-bootstrap";
 //import './Record.js';
 
 
-const url = 'http://54.226.245.141:8080';
+const url = 'http://172.31.19.202:8080/';
 const FastAudio = () => {
     const [selectedAudioFile, setSelectedAudioFile] = useState();
     const [selectedScriptFile, setSelectedScriptFile] = useState();
@@ -273,7 +273,7 @@ const FastAudio = () => {
                                         <p>Select a file to show details</p>
                                     )}
                             <br></br>
-                            <input type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
+                            <input id="upload-script-button" type="submit" value="Upload Script" onClick={handleScriptSubmission}></input>
                             <br></br>
                             <br></br>
                             <input id="gen_audio" type="submit" value="Generate Audio" onClick={generateAudio}  style={{visibility: 'hidden'}}></input>
@@ -298,7 +298,7 @@ const FastAudio = () => {
                                         <p>Select a file to show details</p>
                                     )}
                                 <br></br>
-                                <input type="submit" value="Upload Video" onClick={handleVideoSubmission}></input>
+                                <input id="upload-video-button" type="submit" value="Upload Video" onClick={handleVideoSubmission}></input>
                                     {/* Or record video 
                                 <br></br>
                                 <p>OR</p>
