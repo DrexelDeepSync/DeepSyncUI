@@ -294,7 +294,7 @@ const SlowAudio = () => {
                                 {isVideoFilePicked ? (
                                         <div>
                                             <p>Name: {selectedVideoFile.name}</p>
-                                            <p>Type: {selectedVideoFile.type.split("/")[-1]}</p>
+                                            <p>Type: {selectedVideoFile.type.split("/")[1]}</p>
                                             <p>Size: {selectedVideoFile.size} bytes</p>
                                             <p>
                                                 Last Modified:{' '}
